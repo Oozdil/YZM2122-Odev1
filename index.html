@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>YZM 2122 Yazılım Yapımı Dersi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="OdevCozumu.js"></script>
+  <style>
+  html,body
+  {
+    height: 100%
+  }
+  body
+  {
+  background-image: url(bg.jpg);
+  } 
+  .bg-4 
+  { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+   p {font-size: 16px;}
+  .margin {margin-bottom: 45px;} 
+  .container-fluid {
+      padding-top: 15px;
+      padding-bottom: 15px;
+  }
+  .navbar {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<nav class="navbar navbar-default">
+  <div class="container text-center">   
+     <p><b>YZM 2122 Yazılım Yapımı Dersi Danışman:</b><a href="#"><b>Yrd. Doç. Dr. Emin BORANDAĞ</b></a></p> 
+	  <p><b>Ödevi Hazırlayan: </b><a href="#"><b>Orçun ÖZDİL - 172803065 </b></a></p> 
+  </div>
+</nav>
+
+<!-- Container -->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-5 text-center " style="color:white;border: 2px solid white;border-radius:15px;min-height:490px;padding-bottom:50px;" >  
+	<h1> <u>Rastgele Sayı Seçimi</u></h1>
+    <p>Rastgele sayı üret butonuna basarak sayı oluşturabilirsiniz.</p>
+ <table class="table">
+    <thead>
+      <tr>
+        <th class=" text-center">Sayi1</th>
+		<th class=" text-center">Sayi2</th>
+		<th class=" text-center">Sayi3</th>
+		<th class=" text-center">Sayi4</th>
+		<th class=" text-center">Sayi5</th>
+		<th class=" text-center">Sayi6</th>
+        <th class=" text-center">Hedef</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr>
+        <td id="s1_td">?</td>
+        <td id="s2_td">?</td>
+        <td id="s3_td">?</td>
+		<td id="s4_td">?</td>
+		<td id="s5_td">?</td>
+		<td id="s6_td">?</td>
+		<td id="shedef_td">?</td>
+      </tr>      
+    </tbody>
+  </table>
+ 
+ <button id="btn_rastgele" type="button" onclick="RastgeleSayiUret()" class="btn btn-danger btn-block btn-lg">Rastgele Sayı Üret</button>
+   <div class="btn-group">
+    <div class="radio">
+      <label><input type="radio" name="sonuc_radio" value ="8,6,7,7,3,60,611" checked>Aralıkta bir sonuç bulunca çık</label>
+	   <label><input type="radio" name="sonuc_radio" value ="8,6,7,7,3,60,611" >En yakın sonucu bulmaya calış</label>
+    </div>   
+	</div>
+<hr/>
+  <p>Kendi sayılarınızı girebilir ya da test-datalarını kullanabilirsiniz.</p>
+  <div class="btn-group">
+    <div class="radio">
+      <label><input type="radio" name="optradio" value ="8,6,7,7,3,60,611" checked>8,6,7,7,3,60,611</label>  
+      <label><input type="radio" name="optradio"value ="3,4,7,2,7,50,100" >3,4,7,2,7,50,100</label>  
+      <label><input type="radio" name="optradio" value="3,6,7,3,9,70,485">3,6,7,3,9,70,485</label>
+    </div>
+ 
+ <button id="btn_testdata" type="button" onclick="TestDataKullan()" class="btn btn-success ">Seçili Datayı Kullan</button>
+ <button id="btn_sayigir" type="button" onclick="SayiGirisiYap()" class="btn btn-info ">Kendiniz Sayı Girşi Yapınız</button>
+  </div>
+
+ 
+  
+  </div>
+   
+
+
+
+    <div class="col-sm-7 text-center pre-scrollable " style="color:white;border: 2px solid white;border-radius:15px;min-height:490px;padding-bottom:50px;" >   
+   <h1><u>Çözümü gör !</u></h1>
+  <p id="sonuc_mesaji">Şuan Herhangi Bir Sorgulama Yapmadınız</p><span id="yuzde_durumu"></span>
+ 
+   <table class="table table-bordered" id="sonuc_tablo" style="color:black;">
+    <thead>
+      <tr>       
+		<th class=" text-center">Formül</th>
+		<th class=" text-center">Sonuç</th> 
+        <th class=" text-center">Fark</th> 		
+      </tr>
+    </thead>
+    <tbody id="sonuc_tbl">
+          
+    </tbody>
+  </table>
+  
+    
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center footer navbar-fixed-bottom"> 
+    <p> <b>Manisa Celal Bayar Üniversitesi</b>  <a href="http://yazilimmuh.cbu.edu.tr/"> <b>Yazılım Mühendisliği  	&copy; 2018 </b></a></p> 	   
+</footer>
+
+
+</body>
+</html>
